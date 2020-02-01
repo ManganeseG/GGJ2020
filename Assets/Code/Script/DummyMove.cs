@@ -88,7 +88,7 @@ public class DummyMove : MonoBehaviour
             holdCD -= Time.deltaTime;
             grabbedItem.transform.position = grabPos.transform.position;
 
-            if (Input.GetKeyDown(KeyCode.G) && holdCD <= 0f)
+            if (Input.GetButtonDown("Action_" + ControllerIndex) && holdCD <= 0f)
             {
                 grabbedItem = null;
                 isGrab = false;
@@ -100,7 +100,7 @@ public class DummyMove : MonoBehaviour
     //Needed Part
     private void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.layer == LayerMask.NameToLayer("Item") && Input.GetKeyDown(KeyCode.G) && isGrab == false)
+        if (col.gameObject.layer == LayerMask.NameToLayer("Item") && Input.GetButtonDown("Action_" + ControllerIndex) && isGrab == false)
         {
             isGrab = true;
             grabbedItem = col.gameObject;
