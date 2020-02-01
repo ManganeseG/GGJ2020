@@ -1,11 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Data/Prefabs/Dummy/PLAYER0.prefab.meta
-guid: 387db3be6f9f30a4f869db254395b77e
-PrefabImporter:
-=======
-guid: aaade368cae4ea64da262c554d9e917c
+guid: f2376c51c7a5da740a2ff7c539fd1f12
 DefaultImporter:
->>>>>>> 5d909718fee4635fe9e4c496fbbd72f77cddf822:Assets/Scenes/MergedScene.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

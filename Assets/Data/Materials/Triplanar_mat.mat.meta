@@ -1,11 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Data/Prefabs/Dummy/PLAYER1.prefab.meta
-guid: e0ff27feca02e2b479021740ffb11bcb
-PrefabImporter:
-=======
 guid: a05f8fc5f818f8246b0b484df2f96005
 NativeFormatImporter:
->>>>>>> 5d909718fee4635fe9e4c496fbbd72f77cddf822:Assets/Data/Materials/Triplanar_mat.mat.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 

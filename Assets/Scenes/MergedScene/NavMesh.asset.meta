@@ -1,13 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Data/Prefabs/Dummy/PLAYER2.prefab.meta
-guid: c91fb13ea1e7d9642a8617f71fd8c59e
-PrefabImporter:
-=======
-guid: 5d8eab952394bc94ba9a6c4580b7a486
+guid: e034244e3505dd04983eb6653af5c7f5
 NativeFormatImporter:
->>>>>>> 5d909718fee4635fe9e4c496fbbd72f77cddf822:Assets/Scenes/MergedScene/NavMesh.asset.meta
   externalObjects: {}
-  mainObjectFileID: 23800000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
