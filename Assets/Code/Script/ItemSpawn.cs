@@ -21,11 +21,7 @@ public class ItemSpawn : MonoBehaviour
         cdBeforeNextSpawn = CdBeforeNextSpawn;
         randomPos.x = Random.Range(-transform.localScale.x * xScaleMultiplier, transform.localScale.x * xScaleMultiplier);
         randomPos.y = .25f;
-        randomPos.z = Random.Range(-transform.localScale.z * zScaleMultiplier, transform.localScale.z * zScaleMultiplier);
-
-        
-
-        
+        randomPos.z = Random.Range(-transform.localScale.z * zScaleMultiplier, transform.localScale.z * zScaleMultiplier);        
     }
     
     void Update()
