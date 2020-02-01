@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     #region public Variables
 
-    [HideInInspector] public int inputIndex;
+    [HideInInspector] public int inputIndex = -1;
     #endregion
 
     #region _private Variables
