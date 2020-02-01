@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class ItemSpawn : MonoBehaviour
 {
+    private GameManager gm;
     public float xScaleMultiplier = 1;
     public float zScaleMultiplier = 1;
 
@@ -18,20 +19,14 @@ public class ItemSpawn : MonoBehaviour
 
     void Start()
     {
-        cdBeforeNextSpawn = CdBeforeNextSpawn;
-        randomPos.x = Random.Range(-transform.localScale.x * xScaleMultiplier, transform.localScale.x * xScaleMultiplier);
-        randomPos.y = .25f;
-        randomPos.z = Random.Range(-transform.localScale.z * zScaleMultiplier, transform.localScale.z * zScaleMultiplier);
-
-        
-
-        
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        cdBeforeNextSpawn = CdBeforeNextSpawn;     
     }
     
     void Update()
     {
         cdBeforeNextSpawn -= Time.deltaTime;
-        if(cdBeforeNextSpawn <= 0f)
+        if(cdBeforeNextSpawn <= 0f && gm.TimerValue > 0f)
         {
             randomPos.x = Random.Range(-transform.localScale.x * xScaleMultiplier, transform.localScale.x * xScaleMultiplier);
             randomPos.y = .25f;
@@ -49,5 +44,6 @@ public class ItemSpawn : MonoBehaviour
             }
             cdBeforeNextSpawn = CdBeforeNextSpawn;
         }
+
     }
 }
