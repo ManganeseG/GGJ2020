@@ -14,11 +14,20 @@ public class DummyMove : MonoBehaviour
 
     [Header("Useful Variables")]
     [Range(0, 3)] public int Player;
+    public enum CharaName { Cat, Goat, Axolotl, Owl }
+    public CharaName CharacterName;
+    public GameObject CatMesh;
+    public GameObject OwlMesh;
+    public GameObject GoatMesh;
+    public GameObject AxolotlMesh;
+    private GameObject meshSelected;
+
     public Transform grabPos;
     public bool isGrab;
     private GameObject grabbedItem;
     private float holdCD;
     public float HoldCD = 1f;
+
 
     void Start()
     {
@@ -27,6 +36,29 @@ public class DummyMove : MonoBehaviour
 //Needed Var
         isGrab = false;
         holdCD = HoldCD;
+
+
+        switch (CharacterName)
+        {
+            case CharaName.Cat:
+                meshSelected = Instantiate(CatMesh, gameObject.transform.position, gameObject.transform.rotation);
+                meshSelected.transform.parent = gameObject.transform;
+                break;
+            case CharaName.Goat:
+                meshSelected = Instantiate(GoatMesh, gameObject.transform.position, gameObject.transform.rotation);
+                meshSelected.transform.parent = gameObject.transform;
+                break;
+            case CharaName.Axolotl:
+                meshSelected = Instantiate(AxolotlMesh, gameObject.transform.position, gameObject.transform.rotation);
+                meshSelected.transform.parent = gameObject.transform;
+                break;
+            case CharaName.Owl:
+                meshSelected = Instantiate(OwlMesh, gameObject.transform.position, gameObject.transform.rotation);
+                meshSelected.transform.parent = gameObject.transform;
+                break;
+            default:
+                break;
+        }
     }
 
     void Update()
