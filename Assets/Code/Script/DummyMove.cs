@@ -28,12 +28,13 @@ public class DummyMove : MonoBehaviour
     private float holdCD;
     public float HoldCD = 1f;
 
+    public int ControllerIndex;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
 
-//Needed Var
+        //Needed Var
         isGrab = false;
         holdCD = HoldCD;
 
@@ -67,7 +68,7 @@ public class DummyMove : MonoBehaviour
         if (characterController.isGrounded)
         {
 
-            moveDirection = new Vector3(-Input.GetAxis("Horizontal_0"), 0.0f, -Input.GetAxis("Vertical_0"));
+            moveDirection = new Vector3(-Input.GetAxis("Horizontal_" + ControllerIndex), 0.0f, -Input.GetAxis("Vertical_" + ControllerIndex));
             moveDirection *= speed;
 
             //if (Input.GetButton("Jump"))
@@ -75,19 +76,19 @@ public class DummyMove : MonoBehaviour
             //    moveDirection.y = jumpSpeed;
             //}
         }
-        
+
         moveDirection.y -= gravity * Time.deltaTime;
-        
+
         characterController.Move(moveDirection * Time.deltaTime);
         #endregion
 
         //Needed Part
-        if(isGrab)
+        if (isGrab)
         {
             holdCD -= Time.deltaTime;
             grabbedItem.transform.position = grabPos.transform.position;
 
-            if(Input.GetKeyDown(KeyCode.G) && holdCD <= 0f)
+            if (Input.GetKeyDown(KeyCode.G) && holdCD <= 0f)
             {
                 grabbedItem = null;
                 isGrab = false;
@@ -96,15 +97,15 @@ public class DummyMove : MonoBehaviour
         }
     }
 
-//Needed Part
+    //Needed Part
     private void OnTriggerStay(Collider col)
     {
-        if(col.gameObject.layer == LayerMask.NameToLayer("Item") && Input.GetKeyDown(KeyCode.G) && isGrab == false)
+        if (col.gameObject.layer == LayerMask.NameToLayer("Item") && Input.GetKeyDown(KeyCode.G) && isGrab == false)
         {
             isGrab = true;
             grabbedItem = col.gameObject;
         }
-        if(col.gameObject.layer == LayerMask.NameToLayer("Totem") && isGrab == true)
+        if (col.gameObject.layer == LayerMask.NameToLayer("Totem") && isGrab == true)
         {
             Totem totemSc;
             totemSc = col.gameObject.GetComponent<Totem>();

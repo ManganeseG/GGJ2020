@@ -12,6 +12,8 @@ public class PlayerManager : MonoBehaviour
     public PlayerSelector[] selectorScripts;
     public GameObject menuObject;
     public Text readyText;
+    public Transform cameraTransform;
+    public Vector3 cameraGameRotation = new Vector3(50, 180, 0);
     #endregion
 
     #region _private Variables
@@ -29,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     {
         readyText.text = "";
         _currentCountdown = countDown;
+        cameraTransform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
 
         _playerControllers = new int[maxNumberOfPlayers];
         for (int i = 0; i < _playerControllers.Length; i++)
@@ -144,5 +147,10 @@ public class PlayerManager : MonoBehaviour
     void StartGame()
     {
         menuObject.SetActive(false);
+        cameraTransform.rotation = Quaternion.Euler(cameraGameRotation);
+        for (int i = 0; i < selectorScripts.Length; i++)
+        {
+            selectorScripts[i].SetPlayer();
+        }
     }
 }

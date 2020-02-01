@@ -12,6 +12,7 @@ public class PlayerSelector : MonoBehaviour
     public Vector2 selectionTreshold = new Vector2(-.5f, 0.5f);
     public float timeBetweenInputs = 0.1f;
     public PlayerManager playerManager;
+    public DummyMove dummyMove;
 
     [HideInInspector] public int inputIndex = -1;
     [HideInInspector] public bool isReady;
@@ -137,6 +138,25 @@ public class PlayerSelector : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         inputIndex = _index;
         yield return null;
+    }
+
+    public void SetPlayer()
+    {
+        _charaInstantiated[currentIndex].SetActive(false);
+        string _name = _charaInstantiated[currentIndex].name.Split('(')[0];
+        if (_name == DummyMove.CharaName.Cat.ToString())
+            dummyMove.CharacterName = DummyMove.CharaName.Cat;
+        if (_name == DummyMove.CharaName.Goat.ToString())
+            dummyMove.CharacterName = DummyMove.CharaName.Goat;
+        if (_name == DummyMove.CharaName.Axolotl.ToString())
+            dummyMove.CharacterName = DummyMove.CharaName.Axolotl;
+        if (_name == DummyMove.CharaName.Owl.ToString())
+            dummyMove.CharacterName = DummyMove.CharaName.Owl;
+        if (isReady)
+        {
+            dummyMove.gameObject.SetActive(true);
+            dummyMove.ControllerIndex = inputIndex;
+        }
     }
 
     Color changeColorAlpha(Color _color, float _alpha)
