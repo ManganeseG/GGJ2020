@@ -139,12 +139,10 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
-        Debug.Log(_playersReady);
     }
 
     void StartGame()
     {
         menuObject.SetActive(false);
-        Debug.Log("start");
     }
 }

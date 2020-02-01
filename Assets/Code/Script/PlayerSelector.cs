@@ -97,7 +97,6 @@ public class PlayerSelector : MonoBehaviour
                 readyIcon.color = changeColorAlpha(readyIcon.color, 0);
                 isReady = false;
                 playerManager.RemoveReady();
-                Debug.Log("remove");
             }
         }
     }
