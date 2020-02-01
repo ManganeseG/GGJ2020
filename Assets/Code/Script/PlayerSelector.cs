@@ -12,9 +12,10 @@ public class PlayerSelector : MonoBehaviour
     public Vector2 selectionTreshold = new Vector2(-.5f, 0.5f);
     public float timeBetweenInputs = 0.1f;
     public PlayerManager playerManager;
+    public DummyMove dummyMove;
 
     [HideInInspector] public int inputIndex = -1;
-    [HideInInspector] public bool _isReady;
+    [HideInInspector] public bool isReady;
     [HideInInspector] public int currentIndex;
     #endregion
 
@@ -49,10 +50,9 @@ public class PlayerSelector : MonoBehaviour
 
         updateAxis(timeBetweenInputs);
 
-        if (!_isReady)
+        if (!isReady)
         {
             //Check if someone else already has chose the character
-            Debug.Log(inputIndex);
             _canLock = playerManager.canLockChara(_playerIndex, currentIndex);
             if (!_canLock)
                 lockedIcon.color = changeColorAlpha(lockedIcon.color, 1);
@@ -84,10 +84,11 @@ public class PlayerSelector : MonoBehaviour
             }
 
             //Ready
-            if (inputIndex > 0 && Input.GetButtonDown("Action_" + inputIndex) && _canLock)
+            if (inputIndex >= 0 && Input.GetButtonDown("Action_" + inputIndex) && _canLock)
             {
                 readyIcon.color = changeColorAlpha(readyIcon.color, 1);
-                _isReady = true;
+                isReady = true;
+                playerManager.AddReady();
             }
         }
         else
@@ -95,7 +96,8 @@ public class PlayerSelector : MonoBehaviour
             if (Input.GetButtonDown("Push_" + inputIndex))
             {
                 readyIcon.color = changeColorAlpha(readyIcon.color, 0);
-                _isReady = false;
+                isReady = false;
+                playerManager.RemoveReady();
             }
         }
     }
@@ -136,6 +138,25 @@ public class PlayerSelector : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         inputIndex = _index;
         yield return null;
+    }
+
+    public void SetPlayer()
+    {
+        _charaInstantiated[currentIndex].SetActive(false);
+        string _name = _charaInstantiated[currentIndex].name.Split('(')[0];
+        if (_name == DummyMove.CharaName.Cat.ToString())
+            dummyMove.CharacterName = DummyMove.CharaName.Cat;
+        if (_name == DummyMove.CharaName.Goat.ToString())
+            dummyMove.CharacterName = DummyMove.CharaName.Goat;
+        if (_name == DummyMove.CharaName.Axolotl.ToString())
+            dummyMove.CharacterName = DummyMove.CharaName.Axolotl;
+        if (_name == DummyMove.CharaName.Owl.ToString())
+            dummyMove.CharacterName = DummyMove.CharaName.Owl;
+        if (isReady)
+        {
+            dummyMove.gameObject.SetActive(true);
+            dummyMove.ControllerIndex = inputIndex;
+        }
     }
 
     Color changeColorAlpha(Color _color, float _alpha)
