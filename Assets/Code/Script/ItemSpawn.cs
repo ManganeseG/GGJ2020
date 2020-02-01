@@ -11,7 +11,7 @@ public class ItemSpawn : MonoBehaviour
 
     private Vector3 randomPos;
 
-    public GameObject Ball;
+    public GameObject ItemToSpawn;
 
     public float CdBeforeNextSpawn;
     private float cdBeforeNextSpawn;
@@ -35,12 +35,12 @@ public class ItemSpawn : MonoBehaviour
             NavMeshHit hit;
             if (NavMesh.SamplePosition(randomPos, out hit, 1f, NavMesh.AllAreas))
             {
-                Instantiate(Ball, hit.position, transform.rotation);
+                Instantiate(ItemToSpawn, hit.position, transform.rotation);
             }
             else
             {
                 NavMesh.FindClosestEdge(randomPos, out hit, NavMesh.AllAreas);
-                Instantiate(Ball, hit.position, transform.rotation);
+                Instantiate(ItemToSpawn, hit.position, transform.rotation);
             }
             cdBeforeNextSpawn = CdBeforeNextSpawn;
         }

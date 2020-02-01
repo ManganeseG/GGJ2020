@@ -5,21 +5,24 @@ using UnityEngine;
 public class SpawnPlayer : MonoBehaviour
 {
     public Transform[] PlayersSpawnPos;
+    public GameObject[] playerCharacter;
 
-    public GameObject Cube;
-    public GameObject Sphere;
-    public GameObject Capsule;
-    public GameObject Cylinder;
 
-    private GameObject selectedCharacter;
+    //public GameObject Cat;
+    //public GameObject Axolotl;
+    //public GameObject Owl;
+    //public GameObject Goat;
+
+    //private GameObject selectedCharacter;
 
 
     void Start()
     {
-        for(int i = 0; i < PlayersSpawnPos.Length; i++)
+        for(int i = 0; i <= playerCharacter.Length; i++)
         {
-            Instantiate(Sphere, PlayersSpawnPos[i]); //replace sphere by selected char
-        }   
+            playerCharacter[i].transform.position = PlayersSpawnPos[i].position;
+        }
+
     }
     
 
