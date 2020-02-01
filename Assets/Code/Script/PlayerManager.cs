@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     #region public Variables
     public int maxNumberOfPlayers = 4;
-    public GameObject[] playersObjects;
+    public GameObject[] playersObjects; //May be deleted
     public PlayerSelector[] selectorScripts;
     #endregion
 
@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public int numberOfPlayers = 0;
     int[] _playerControllers;
     PlayerController[] _playersScripts;
+    int _playerIndex;
     #endregion
 
     void Start()
@@ -30,7 +31,6 @@ public class PlayerManager : MonoBehaviour
         {
             _playersScripts[i] = playersObjects[i].GetComponent<PlayerController>();
         }
-
     }
 
     void Update()
@@ -47,19 +47,41 @@ public class PlayerManager : MonoBehaviour
                     else
                         return;
                 }
+                for (int j = 0; j < maxNumberOfPlayers; j++)
+                {
+                    if (_playerControllers[j] == -1)
+                    {
+                        _playerIndex = j;
+                        break;
+                    }
+                }
                 //Then Apply it to him
-                _playerControllers[numberOfPlayers] = i;
-                _playersScripts[numberOfPlayers].inputIndex = i;
-                selectorScripts[numberOfPlayers].inputIndex = i;
-                playersObjects[numberOfPlayers].SetActive(true);
-                numberOfPlayers++;
+                _playerControllers[_playerIndex] = i;
+                _playersScripts[_playerIndex].inputIndex = i;
+                selectorScripts[_playerIndex].inputIndex = i;
+                StartCoroutine(selectorScripts[_playerIndex].addPlayer(_playerIndex));
                 numberOfPlayers++;
                 break;
             }
     }
 
-    void SetupPlayers()
+    public void RemovePlayer(int _playerIndex, int _controllerIndex)
     {
+        _playerControllers[_playerIndex] = -1;
+        _playersScripts[_playerIndex].inputIndex = -1;
+        selectorScripts[_playerIndex].inputIndex = -1;
+        numberOfPlayers--;
+    }
 
+    public bool canLockChara(int playerIndex, int charaIndex)
+    {
+        for (int i = 0; i < selectorScripts.Length; i++)
+        {
+            if (i != playerIndex && selectorScripts[i].currentIndex == charaIndex && selectorScripts[i]._isReady)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
