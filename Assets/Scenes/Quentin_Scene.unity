@@ -772,17 +772,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaObjects:
-  - {fileID: 4024724505579759892, guid: 9dabdba41f166474bb8f41f84cc304a8, type: 3}
-  - {fileID: 9012677516257726941, guid: 6cf506133d411e94da7da1f8f793ff50, type: 3}
-  - {fileID: 5721685164808727572, guid: 7f3bf9b5acdd9424a869d612552c5101, type: 3}
-  - {fileID: 3362660379134317409, guid: 5e3dd122c808bd44da17c30bb989241a, type: 3}
+  - {fileID: 4260031819350950863, guid: 15a5605daeb21504d9efbd1f0e72f775, type: 3}
+  - {fileID: 7509962213950574978, guid: eb16240d2552ea345958a7bd3cd456f8, type: 3}
+  - {fileID: 6145762504616082831, guid: 2ca4ec3db30b1104f92de2877925e87a, type: 3}
+  - {fileID: 3715630232644360949, guid: 2e49fbb941102424790de8e5872abce9, type: 3}
   readyIcon: {fileID: 1692142047}
   lockedIcon: {fileID: 264509473}
   selectionTreshold: {x: -0.5, y: 0.5}
   timeBetweenInputs: 0.5
   playerManager: {fileID: 1542620919}
   inputIndex: 0
-  _isReady: 0
+  isReady: 0
   currentIndex: 0
 --- !u!1 &935768123
 GameObject:
@@ -935,17 +935,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaObjects:
-  - {fileID: 4024724505579759892, guid: 9dabdba41f166474bb8f41f84cc304a8, type: 3}
-  - {fileID: 9012677516257726941, guid: 6cf506133d411e94da7da1f8f793ff50, type: 3}
-  - {fileID: 5721685164808727572, guid: 7f3bf9b5acdd9424a869d612552c5101, type: 3}
-  - {fileID: 3362660379134317409, guid: 5e3dd122c808bd44da17c30bb989241a, type: 3}
+  - {fileID: 4260031819350950863, guid: 15a5605daeb21504d9efbd1f0e72f775, type: 3}
+  - {fileID: 7509962213950574978, guid: eb16240d2552ea345958a7bd3cd456f8, type: 3}
+  - {fileID: 6145762504616082831, guid: 2ca4ec3db30b1104f92de2877925e87a, type: 3}
+  - {fileID: 3715630232644360949, guid: 2e49fbb941102424790de8e5872abce9, type: 3}
   readyIcon: {fileID: 1464478141}
   lockedIcon: {fileID: 1297183688}
   selectionTreshold: {x: -0.5, y: 0.5}
   timeBetweenInputs: 0.5
   playerManager: {fileID: 1542620919}
   inputIndex: 0
-  _isReady: 0
+  isReady: 0
   currentIndex: 0
 --- !u!1 &1091261608
 GameObject:
@@ -1349,6 +1349,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300128407}
   m_CullTransparentMesh: 0
+--- !u!1 &1363979574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363979575}
+  - component: {fileID: 1363979577}
+  - component: {fileID: 1363979576}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1363979575
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363979574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_Children: []
+  m_Father: {fileID: 1456090982}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -120}
+  m_SizeDelta: {x: 800, y: 500}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1363979576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363979574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6745098, g: 0.32156864, b: 0.47058824, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 150
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 200
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Ready ?
+
+    999'
+--- !u!222 &1363979577
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363979574}
+  m_CullTransparentMesh: 0
 --- !u!1 &1400326849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1652,7 @@ RectTransform:
   - {fileID: 472232863}
   - {fileID: 1400326850}
   - {fileID: 29164042}
+  - {fileID: 1363979575}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1856,6 +1936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNumberOfPlayers: 4
+  countDown: 5
   playersObjects:
   - {fileID: 1793572791}
   - {fileID: 167061581}
@@ -1866,6 +1947,8 @@ MonoBehaviour:
   - {fileID: 1807820836}
   - {fileID: 1828534034}
   - {fileID: 888449759}
+  menuObject: {fileID: 1456090978}
+  readyText: {fileID: 1363979576}
   numberOfPlayers: 0
 --- !u!4 &1542620920
 Transform:
@@ -2043,17 +2126,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaObjects:
-  - {fileID: 4024724505579759892, guid: 9dabdba41f166474bb8f41f84cc304a8, type: 3}
-  - {fileID: 9012677516257726941, guid: 6cf506133d411e94da7da1f8f793ff50, type: 3}
-  - {fileID: 5721685164808727572, guid: 7f3bf9b5acdd9424a869d612552c5101, type: 3}
-  - {fileID: 3362660379134317409, guid: 5e3dd122c808bd44da17c30bb989241a, type: 3}
+  - {fileID: 4260031819350950863, guid: 15a5605daeb21504d9efbd1f0e72f775, type: 3}
+  - {fileID: 7509962213950574978, guid: eb16240d2552ea345958a7bd3cd456f8, type: 3}
+  - {fileID: 6145762504616082831, guid: 2ca4ec3db30b1104f92de2877925e87a, type: 3}
+  - {fileID: 3715630232644360949, guid: 2e49fbb941102424790de8e5872abce9, type: 3}
   readyIcon: {fileID: 862432176}
   lockedIcon: {fileID: 1093649167}
   selectionTreshold: {x: -0.5, y: 0.5}
   timeBetweenInputs: 0.5
   playerManager: {fileID: 1542620919}
   inputIndex: 0
-  _isReady: 0
+  isReady: 0
   currentIndex: 0
 --- !u!1 &1828534032
 GameObject:
@@ -2099,17 +2182,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaObjects:
-  - {fileID: 4024724505579759892, guid: 9dabdba41f166474bb8f41f84cc304a8, type: 3}
-  - {fileID: 9012677516257726941, guid: 6cf506133d411e94da7da1f8f793ff50, type: 3}
-  - {fileID: 5721685164808727572, guid: 7f3bf9b5acdd9424a869d612552c5101, type: 3}
-  - {fileID: 3362660379134317409, guid: 5e3dd122c808bd44da17c30bb989241a, type: 3}
+  - {fileID: 4260031819350950863, guid: 15a5605daeb21504d9efbd1f0e72f775, type: 3}
+  - {fileID: 7509962213950574978, guid: eb16240d2552ea345958a7bd3cd456f8, type: 3}
+  - {fileID: 6145762504616082831, guid: 2ca4ec3db30b1104f92de2877925e87a, type: 3}
+  - {fileID: 3715630232644360949, guid: 2e49fbb941102424790de8e5872abce9, type: 3}
   readyIcon: {fileID: 1300128409}
   lockedIcon: {fileID: 1540364043}
   selectionTreshold: {x: -0.5, y: 0.5}
   timeBetweenInputs: 0.5
   playerManager: {fileID: 1542620919}
   inputIndex: 0
-  _isReady: 0
+  isReady: 0
   currentIndex: 0
 --- !u!1 &1903396547
 GameObject:

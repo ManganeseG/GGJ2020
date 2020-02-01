@@ -14,7 +14,7 @@ public class PlayerSelector : MonoBehaviour
     public PlayerManager playerManager;
 
     [HideInInspector] public int inputIndex = -1;
-    [HideInInspector] public bool _isReady;
+    [HideInInspector] public bool isReady;
     [HideInInspector] public int currentIndex;
     #endregion
 
@@ -49,10 +49,9 @@ public class PlayerSelector : MonoBehaviour
 
         updateAxis(timeBetweenInputs);
 
-        if (!_isReady)
+        if (!isReady)
         {
             //Check if someone else already has chose the character
-            Debug.Log(inputIndex);
             _canLock = playerManager.canLockChara(_playerIndex, currentIndex);
             if (!_canLock)
                 lockedIcon.color = changeColorAlpha(lockedIcon.color, 1);
@@ -84,10 +83,11 @@ public class PlayerSelector : MonoBehaviour
             }
 
             //Ready
-            if (inputIndex > 0 && Input.GetButtonDown("Action_" + inputIndex) && _canLock)
+            if (inputIndex >= 0 && Input.GetButtonDown("Action_" + inputIndex) && _canLock)
             {
                 readyIcon.color = changeColorAlpha(readyIcon.color, 1);
-                _isReady = true;
+                isReady = true;
+                playerManager.AddReady();
             }
         }
         else
@@ -95,7 +95,9 @@ public class PlayerSelector : MonoBehaviour
             if (Input.GetButtonDown("Push_" + inputIndex))
             {
                 readyIcon.color = changeColorAlpha(readyIcon.color, 0);
-                _isReady = false;
+                isReady = false;
+                playerManager.RemoveReady();
+                Debug.Log("remove");
             }
         }
     }
