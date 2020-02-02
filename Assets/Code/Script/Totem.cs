@@ -8,6 +8,8 @@ public class Totem : MonoBehaviour
     [Range(0, 3)]
     public int playerTotem;
     public Slider constructionSlider;
+    private int winner;
+    public bool thereIsAWinner = false;
 
     void Start()
     {
@@ -17,6 +19,9 @@ public class Totem : MonoBehaviour
 
     void Update()
     {
-        
+        if(constructionSlider.value == 1f)
+        {
+            thereIsAWinner = true;
+        }
     }
 }

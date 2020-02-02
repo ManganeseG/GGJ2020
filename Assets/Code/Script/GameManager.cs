@@ -15,10 +15,17 @@ public class GameManager : MonoBehaviour
     private float lerpVal = 0f;
     public AnimationCurve timeOutAC;
 #endregion
+#region Winner
+    [Header("Winner")]
+    public Text WinnerText;
+    public Totem[] totems;
+    public DummyMove[] players;
+#endregion
 
     void Start()
     {
         Timeout.enabled = false;
+        WinnerText.enabled = false;
     }
 
     void Update()
@@ -35,9 +42,16 @@ public class GameManager : MonoBehaviour
             float timeOutEval = timeOutAC.Evaluate(lerpVal);
             Timeout.rectTransform.localScale = new Vector3(timeOutEval, timeOutEval, timeOutEval);
             StartCoroutine(BeforeReload());
-            
         }
 
+        foreach(Totem i in totems)
+        {
+            if(i.thereIsAWinner)
+            {
+                WinnerText.enabled = true;
+                WinnerText.text = players[i.playerTotem].CharacterName.ToString() + " is the winner";
+            }
+        }
     }
 
     IEnumerator BeforeReload()
