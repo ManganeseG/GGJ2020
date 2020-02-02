@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class GameManager : MonoBehaviour
     public float LerpSpeed = .5f;
     private float lerpVal = 0f;
     public AnimationCurve timeOutAC;
-    #endregion
+#endregion
 
     void Start()
     {
@@ -32,7 +34,16 @@ public class GameManager : MonoBehaviour
             lerpVal += Time.deltaTime * LerpSpeed;
             float timeOutEval = timeOutAC.Evaluate(lerpVal);
             Timeout.rectTransform.localScale = new Vector3(timeOutEval, timeOutEval, timeOutEval);
+            StartCoroutine(BeforeReload());
+            
         }
 
+    }
+
+    IEnumerator BeforeReload()
+    {
+        yield return new WaitForSeconds(5f);
+        if (Input.anyKeyDown)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

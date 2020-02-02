@@ -18,7 +18,7 @@ public class SpawnPlayer : MonoBehaviour
 
     void Start()
     {
-        for(int i = 0; i <= playerCharacter.Length; i++)
+        for(int i = 0; i < playerCharacter.Length; i++)
         {
             playerCharacter[i].transform.position = PlayersSpawnPos[i].position;
         }
