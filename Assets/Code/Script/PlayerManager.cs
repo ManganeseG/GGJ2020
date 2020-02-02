@@ -33,6 +33,8 @@ public class PlayerManager : MonoBehaviour
         readyText.text = "";
         _currentCountdown = countDown;
         cameraTransform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        gameManager.Timer.text = "";
+        gameManager.Timeout.enabled = false;
         gameManager.enabled = false;
 
         _playerControllers = new int[maxNumberOfPlayers];
