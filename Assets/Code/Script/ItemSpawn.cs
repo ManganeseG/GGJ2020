@@ -20,13 +20,13 @@ public class ItemSpawn : MonoBehaviour
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        cdBeforeNextSpawn = CdBeforeNextSpawn;     
+        cdBeforeNextSpawn = CdBeforeNextSpawn;
     }
-    
+
     void Update()
     {
         cdBeforeNextSpawn -= Time.deltaTime;
-        if(cdBeforeNextSpawn <= 0f && gm.TimerValue > 0f)
+        if (cdBeforeNextSpawn <= 0f && gm.TimerValue > 0f)
         {
             randomPos.x = Random.Range(-transform.localScale.x * xScaleMultiplier, transform.localScale.x * xScaleMultiplier);
             randomPos.y = .25f;
@@ -39,8 +39,9 @@ public class ItemSpawn : MonoBehaviour
             }
             else
             {
-                NavMesh.FindClosestEdge(randomPos, out hit, NavMesh.AllAreas);
-                Instantiate(ItemToSpawn, hit.position, transform.rotation);
+                return;
+                // NavMesh.FindClosestEdge(randomPos, out hit, NavMesh.AllAreas);
+                // Instantiate(ItemToSpawn, hit.position, transform.rotation);
             }
             cdBeforeNextSpawn = CdBeforeNextSpawn;
         }

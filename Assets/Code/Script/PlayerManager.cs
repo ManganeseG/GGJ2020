@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     public Text readyText;
     public Transform cameraTransform;
     public Vector3 cameraGameRotation = new Vector3(50, 180, 0);
+    public GameManager gameManager;
     #endregion
 
     #region _private Variables
@@ -24,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     bool _areAllPlayerReady;
     int _playersReady;
     int _lastPlayersReady;
+    int _currentNumberOfPlayers;
     #endregion
 
     void Start()
@@ -31,6 +33,7 @@ public class PlayerManager : MonoBehaviour
         readyText.text = "";
         _currentCountdown = countDown;
         cameraTransform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        gameManager.enabled = false;
 
         _playerControllers = new int[maxNumberOfPlayers];
         for (int i = 0; i < _playerControllers.Length; i++)
@@ -65,6 +68,7 @@ public class PlayerManager : MonoBehaviour
                 _playerControllers[_playerIndex] = i;
                 selectorScripts[_playerIndex].inputIndex = i;
                 StartCoroutine(selectorScripts[_playerIndex].addPlayer(_playerIndex));
+                checkIfAllReady();
                 numberOfPlayers++;
                 break;
             }
@@ -116,21 +120,31 @@ public class PlayerManager : MonoBehaviour
 
     public void checkIfAllReady()
     {
+        _currentNumberOfPlayers = 0;
         for (int i = 0; i < selectorScripts.Length; i++)
         {
+            if (selectorScripts[i].inputIndex != -1)
+            {
+                _currentNumberOfPlayers++;
+            }
             if (!selectorScripts[i].isReady && selectorScripts[i].inputIndex > -1)
             {
                 _areAllPlayerReady = false;
                 readyText.text = "";
                 break;
             }
-            if (i == selectorScripts.Length - 1)
+            if (i == selectorScripts.Length - 1 && _playersReady == _currentNumberOfPlayers)
             {
                 if (_playersReady >= 2)
                 {
                     _currentCountdown = countDown;
                     _areAllPlayerReady = true;
                 }
+            }
+            else
+            {
+                _areAllPlayerReady = false;
+                readyText.text = "";
             }
         }
     }
@@ -139,9 +153,11 @@ public class PlayerManager : MonoBehaviour
     {
         menuObject.SetActive(false);
         cameraTransform.rotation = Quaternion.Euler(cameraGameRotation);
+        gameManager.enabled = true;
         for (int i = 0; i < selectorScripts.Length; i++)
         {
             selectorScripts[i].SetPlayer();
+            selectorScripts[i].enabled = false;
         }
     }
 }

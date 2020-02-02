@@ -81,6 +81,7 @@ public class PlayerSelector : MonoBehaviour
                 currentIndex = 0;
                 lockedIcon.color = changeColorAlpha(lockedIcon.color, 0);
                 playerManager.RemovePlayer(_playerIndex, inputIndex);
+                playerManager.checkIfAllReady();
             }
 
             //Ready

@@ -1771,6 +1771,8 @@ MonoBehaviour:
   grabPos: {fileID: 368845262}
   isGrab: 0
   HoldCD: 1
+  StunCD: 1
+  StunnedStateCD: 3
   ControllerIndex: 0
 --- !u!143 &331971096
 CharacterController:
@@ -2708,6 +2710,8 @@ MonoBehaviour:
   grabPos: {fileID: 1992968534}
   isGrab: 0
   HoldCD: 1
+  StunCD: 1
+  StunnedStateCD: 3
   ControllerIndex: 0
 --- !u!143 &508957473
 CharacterController:
@@ -2775,7 +2779,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -453}
+  m_AnchoredPosition: {x: 0, y: -366}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &516905345
@@ -3141,6 +3145,7 @@ MonoBehaviour:
   readyText: {fileID: 1837104582}
   cameraTransform: {fileID: 2102108680}
   cameraGameRotation: {x: 50, y: 180, z: 0}
+  gameManager: {fileID: 1034393055}
   numberOfPlayers: 0
 --- !u!4 &627909827
 Transform:
@@ -6448,6 +6453,8 @@ MonoBehaviour:
   grabPos: {fileID: 959704635}
   isGrab: 0
   HoldCD: 1
+  StunCD: 1
+  StunnedStateCD: 3
   ControllerIndex: 0
 --- !u!143 &1429506829
 CharacterController:
@@ -7399,6 +7406,8 @@ MonoBehaviour:
   grabPos: {fileID: 1154408007}
   isGrab: 0
   HoldCD: 1
+  StunCD: 1
+  StunnedStateCD: 3
   ControllerIndex: 0
 --- !u!143 &1667364866
 CharacterController:
@@ -9375,7 +9384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 126}
+  m_AnchoredPosition: {x: 0, y: 393}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2089161742
@@ -10064,6 +10073,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209667450}
     m_Modifications:
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Name
+      value: Champi_Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2478159909545547765, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10128,21 +10152,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.010000011
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Name
-      value: Champi_Low
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec627ac904d7f4a44873ced20752bda5, type: 3}
@@ -10740,6 +10749,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209667450}
     m_Modifications:
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Name
+      value: Champi_Low Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2478159909545547765, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10805,21 +10829,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.010000007
       objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Name
-      value: Champi_Low Variant (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 865745124353069370, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -10877,7 +10886,7 @@ MonoBehaviour:
   zScaleMultiplier: 25
   ItemToSpawn: {fileID: 160134021483930738, guid: 75968bf21389db1428fb936d112532dd,
     type: 3}
-  CdBeforeNextSpawn: 0.2
+  CdBeforeNextSpawn: 2
 --- !u!4 &7201590687332347449
 Transform:
   m_ObjectHideFlags: 0
@@ -11261,6 +11270,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209667450}
     m_Modifications:
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Name
+      value: Champi_Low Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2478159909545547765, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11325,21 +11349,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.010000011
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Name
-      value: Champi_Low Variant (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 865745124353069370, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}
@@ -12203,6 +12212,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209667450}
     m_Modifications:
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Name
+      value: Champi_Low Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2478159909545547765, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12267,21 +12291,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.010000011
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Name
-      value: Champi_Low Variant (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 865745124353069370, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}
@@ -12388,6 +12397,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209667450}
     m_Modifications:
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Name
+      value: Champi_Low Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2478159909545547765, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12452,21 +12476,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.010000011
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Name
-      value: Champi_Low Variant (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec627ac904d7f4a44873ced20752bda5, type: 3}
@@ -12848,6 +12857,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209667450}
     m_Modifications:
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Name
+      value: Champi_Low Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2478159909545547765, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12912,21 +12936,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.010000011
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Name
-      value: Champi_Low Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458999798794642918, guid: ec627ac904d7f4a44873ced20752bda5,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 865745124353069370, guid: ec627ac904d7f4a44873ced20752bda5,
         type: 3}

@@ -148,7 +148,7 @@ public class DummyMove : MonoBehaviour
             }
         }
 
-        if (col.gameObject.layer == LayerMask.NameToLayer("Player") && Input.GetKeyDown(KeyCode.G) && canStun == true)
+        if (col.gameObject.layer == LayerMask.NameToLayer("Player") && Input.GetButtonDown("Push_" + ControllerIndex) && canStun == true && !isGrab)
         {
             Debug.Log("meh");
             DummyMove ennemyMove;
