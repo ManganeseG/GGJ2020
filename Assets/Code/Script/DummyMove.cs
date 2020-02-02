@@ -28,6 +28,14 @@ public class DummyMove : MonoBehaviour
     private float holdCD;
     public float HoldCD = 1f;
 
+    private float stunCD;
+    public float StunCD = 1f;
+    private float stunnedStateCD;
+    public float StunnedStateCD = 3f;
+    private bool canStun = false;
+    private bool hasBeenStunned = false;
+
+
     public int ControllerIndex;
 
     void Start()
@@ -37,7 +45,8 @@ public class DummyMove : MonoBehaviour
         //Needed Var
         isGrab = false;
         holdCD = HoldCD;
-
+        stunCD = StunCD;
+        stunnedStateCD = StunnedStateCD;
 
         switch (CharacterName)
         {
@@ -65,39 +74,59 @@ public class DummyMove : MonoBehaviour
     void Update()
     {
         #region Move
-        if (characterController.isGrounded)
+        if(hasBeenStunned == false)
         {
-
-            moveDirection = new Vector3(-Input.GetAxis("Horizontal_" + ControllerIndex), 0.0f, -Input.GetAxis("Vertical_" + ControllerIndex));
-            moveDirection *= speed;
-
-            //if (Input.GetButton("Jump"))
-            //{
-            //    moveDirection.y = jumpSpeed;
-            //}
-        }
-
-        moveDirection.y -= gravity * Time.deltaTime;
-
-        characterController.Move(moveDirection * Time.deltaTime);
-        #endregion
-
-        //Needed Part
-        if (isGrab)
-        {
-            holdCD -= Time.deltaTime;
-            grabbedItem.transform.position = grabPos.transform.position;
-
-            if (Input.GetButtonDown("Action_" + ControllerIndex) && holdCD <= 0f)
+            if (characterController.isGrounded)
             {
-                grabbedItem = null;
-                isGrab = false;
-                holdCD = HoldCD;
+
+                moveDirection = new Vector3(-Input.GetAxis("Horizontal_" + ControllerIndex), 0.0f, -Input.GetAxis("Vertical_" + ControllerIndex));
+                moveDirection *= speed;
+
+                //if (Input.GetButton("Jump"))
+                //{
+                //    moveDirection.y = jumpSpeed;
+                //}
+            }
+            moveDirection.y -= gravity * Time.deltaTime;
+
+            characterController.Move(moveDirection * Time.deltaTime);
+            #endregion
+            
+            if (isGrab)
+            {
+                holdCD -= Time.deltaTime;
+                grabbedItem.transform.position = grabPos.transform.position;
+
+                if ((Input.GetButtonDown("Action_" + ControllerIndex) && holdCD <= 0f) || hasBeenStunned == true)
+                {
+                    grabbedItem = null;
+                    isGrab = false;
+                    holdCD = HoldCD;
+                }
+            }
+        }        
+        else
+        {
+            characterController.Move(Vector3.zero);
+            stunnedStateCD -= Time.deltaTime;
+            if(stunnedStateCD <= 0)
+            {
+                hasBeenStunned = false;
+                stunnedStateCD = StunnedStateCD;
             }
         }
+        if(canStun == false)
+        {
+            stunCD -= Time.deltaTime;
+            if(stunCD <= 0)
+            {
+                canStun = true;
+                stunCD = StunCD;
+            }
+        }
+        //stunCD -= Time.deltaTime;
     }
-
-    //Needed Part
+    
     private void OnTriggerStay(Collider col)
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Item") && Input.GetButtonDown("Action_" + ControllerIndex) && isGrab == false)
@@ -118,5 +147,17 @@ public class DummyMove : MonoBehaviour
                 holdCD = HoldCD;
             }
         }
+
+        if (col.gameObject.layer == LayerMask.NameToLayer("Player") && Input.GetKeyDown(KeyCode.G) && canStun == true)
+        {
+            Debug.Log("meh");
+            DummyMove ennemyMove;
+            ennemyMove = col.gameObject.GetComponent<DummyMove>();
+            ennemyMove.hasBeenStunned = true;
+
+            canStun = false;
+        }
     }
+
+
 }
