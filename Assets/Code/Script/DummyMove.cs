@@ -30,6 +30,9 @@ public class DummyMove : MonoBehaviour
 
     private float stunCD;
     public float StunCD = 1f;
+    private float timeBeforeNextStun;
+    public float TimeBeforeNextStun = 5f;
+    public GameObject StunZone;
     private float stunnedStateCD;
     public float StunnedStateCD = 3f;
     private bool canStun = false;
@@ -46,7 +49,9 @@ public class DummyMove : MonoBehaviour
         isGrab = false;
         holdCD = HoldCD;
         stunCD = StunCD;
+        timeBeforeNextStun = TimeBeforeNextStun;
         stunnedStateCD = StunnedStateCD;
+        StunZone.SetActive(false);
 
         switch (CharacterName)
         {
@@ -115,16 +120,28 @@ public class DummyMove : MonoBehaviour
                 stunnedStateCD = StunnedStateCD;
             }
         }
-        if(canStun == false)
+        if ((Input.GetKeyDown(KeyCode.G) || Input.GetButtonDown("Push_" + ControllerIndex)) && canStun == true && isGrab == false)
         {
+            StunZone.SetActive(true);
+            canStun = false;
+        }
+        if(!canStun)
+        {
+            timeBeforeNextStun -= Time.deltaTime;
             stunCD -= Time.deltaTime;
-            if(stunCD <= 0)
+            if(stunCD <= 0f)
+            {
+                StunZone.SetActive(false);
+                
+            }
+            if(timeBeforeNextStun <= 0f)
             {
                 canStun = true;
+                timeBeforeNextStun = TimeBeforeNextStun;
                 stunCD = StunCD;
             }
+            
         }
-        //stunCD -= Time.deltaTime;
     }
     
     private void OnTriggerStay(Collider col)
@@ -147,16 +164,18 @@ public class DummyMove : MonoBehaviour
                 holdCD = HoldCD;
             }
         }
-
-        if (col.gameObject.layer == LayerMask.NameToLayer("Player") && Input.GetButtonDown("Push_" + ControllerIndex) && canStun == true && !isGrab)
+        if(col.gameObject.layer == LayerMask.NameToLayer("StunZone"))
         {
-            Debug.Log("meh");
             DummyMove ennemyMove;
-            ennemyMove = col.gameObject.GetComponent<DummyMove>();
+            ennemyMove = col.gameObject.GetComponentInParent<DummyMove>();
             ennemyMove.hasBeenStunned = true;
-
-            canStun = false;
         }
+        //if (col.gameObject.layer == LayerMask.NameToLayer("Player") && (Input.GetButtonDown("Push_" + ControllerIndex) || Input.GetKeyDown(KeyCode.G)) && canStun == true && !isGrab)
+        //{
+        //    Debug.Log("meh");
+        //
+        //    canStun = false;
+        //}
     }
 
 
