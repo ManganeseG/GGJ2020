@@ -28,6 +28,7 @@ public class PlayerSelector : MonoBehaviour
     float _currentTimer = -1;
     int _playerIndex;
     bool _canLock;
+    Animator[] _charaAnimator;
     #endregion
 
     void Start()
@@ -40,6 +41,12 @@ public class PlayerSelector : MonoBehaviour
             _charaInstantiated[i] = Instantiate(charaObjects[i], transform);
             _charaInstantiated[i].transform.localPosition = Vector3.zero;
             _charaInstantiated[i].SetActive(false);
+        }
+
+        _charaAnimator = new Animator[charaObjects.Length];
+        for (int i = 0; i < _charaAnimator.Length; i++)
+        {
+            _charaAnimator[i] = charaObjects[i].GetComponent<Animator>();
         }
     }
 
@@ -87,6 +94,7 @@ public class PlayerSelector : MonoBehaviour
             //Ready
             if (inputIndex >= 0 && Input.GetButtonDown("Action_" + inputIndex) && _canLock)
             {
+                _charaAnimator[inputIndex].SetTrigger("Select");    //WHY
                 readyIcon.color = changeColorAlpha(readyIcon.color, 1);
                 isReady = true;
                 playerManager.AddReady();
@@ -96,6 +104,7 @@ public class PlayerSelector : MonoBehaviour
         {
             if (Input.GetButtonDown("Push_" + inputIndex))
             {
+                _charaAnimator[inputIndex].SetTrigger("Select");    //WHY
                 readyIcon.color = changeColorAlpha(readyIcon.color, 0);
                 isReady = false;
                 playerManager.RemoveReady();
