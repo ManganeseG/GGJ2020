@@ -23,19 +23,19 @@ public class Totem : MonoBehaviour
         switch (playerDummy.CharacterName)
         {
             case DummyMove.CharaName.Cat:
-                totemselected = Instantiate(totemCat, gameObject.transform.position, gameObject.transform.rotation);
+                totemselected = Instantiate(totemCat, gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f,180f)));
                 totemselected.transform.parent = gameObject.transform;
                 break;
             case DummyMove.CharaName.Goat:
-                totemselected = Instantiate(totemGoat, gameObject.transform.position, gameObject.transform.rotation);
+                totemselected = Instantiate(totemGoat, gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 180f)));
                 totemselected.transform.parent = gameObject.transform;
                 break;
             case DummyMove.CharaName.Axolotl:
-                totemselected = Instantiate(totemAxolotl, gameObject.transform.position, gameObject.transform.rotation);
+                totemselected = Instantiate(totemAxolotl, gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 180f)));
                 totemselected.transform.parent = gameObject.transform;
                 break;
             case DummyMove.CharaName.Owl:
-                totemselected = Instantiate(totemOwl, gameObject.transform.position, gameObject.transform.rotation);
+                totemselected = Instantiate(totemOwl, gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 180f)));
                 totemselected.transform.parent = gameObject.transform;
                 break;
             default:
