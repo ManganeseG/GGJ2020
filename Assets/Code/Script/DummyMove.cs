@@ -38,7 +38,8 @@ public class DummyMove : MonoBehaviour
     private bool canStun = false;
     private bool hasBeenStunned = false;
 
-
+    private Animator animator;
+    private Quaternion targetRotation;
     public int ControllerIndex;
 
     void Start()
@@ -74,29 +75,34 @@ public class DummyMove : MonoBehaviour
             default:
                 break;
         }
+
+        animator = meshSelected.GetComponent<Animator>();
     }
 
     void Update()
     {
         #region Move
-        if(hasBeenStunned == false)
+        if (hasBeenStunned == false)
         {
             if (characterController.isGrounded)
             {
 
                 moveDirection = new Vector3(-Input.GetAxis("Horizontal_" + ControllerIndex), 0.0f, -Input.GetAxis("Vertical_" + ControllerIndex));
-                moveDirection *= speed;
+                animator.SetFloat("Speed", moveDirection.magnitude);
+                animator.SetBool("HasObject", isGrab);
 
-                //if (Input.GetButton("Jump"))
-                //{
-                //    moveDirection.y = jumpSpeed;
-                //}
+                if (moveDirection.magnitude > 0)
+                {
+                    targetRotation = Quaternion.LookRotation(moveDirection.normalized);
+                }
+                meshSelected.transform.rotation = targetRotation;
+                moveDirection *= speed;
             }
             moveDirection.y -= gravity * Time.deltaTime;
 
             characterController.Move(moveDirection * Time.deltaTime);
             #endregion
-            
+
             if (isGrab)
             {
                 holdCD -= Time.deltaTime;
@@ -109,12 +115,12 @@ public class DummyMove : MonoBehaviour
                     holdCD = HoldCD;
                 }
             }
-        }        
+        }
         else
         {
             characterController.Move(Vector3.zero);
             stunnedStateCD -= Time.deltaTime;
-            if(stunnedStateCD <= 0)
+            if (stunnedStateCD <= 0)
             {
                 hasBeenStunned = false;
                 stunnedStateCD = StunnedStateCD;
@@ -122,28 +128,29 @@ public class DummyMove : MonoBehaviour
         }
         if ((Input.GetKeyDown(KeyCode.G) || Input.GetButtonDown("Push_" + ControllerIndex)) && canStun == true && isGrab == false)
         {
+            animator.SetTrigger("Push");
             StunZone.SetActive(true);
             canStun = false;
         }
-        if(!canStun)
+        if (!canStun)
         {
             timeBeforeNextStun -= Time.deltaTime;
             stunCD -= Time.deltaTime;
-            if(stunCD <= 0f)
+            if (stunCD <= 0f)
             {
                 StunZone.SetActive(false);
-                
+
             }
-            if(timeBeforeNextStun <= 0f)
+            if (timeBeforeNextStun <= 0f)
             {
                 canStun = true;
                 timeBeforeNextStun = TimeBeforeNextStun;
                 stunCD = StunCD;
             }
-            
+
         }
     }
-    
+
     private void OnTriggerStay(Collider col)
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Item") && Input.GetButtonDown("Action_" + ControllerIndex) && isGrab == false)
@@ -164,11 +171,12 @@ public class DummyMove : MonoBehaviour
                 holdCD = HoldCD;
             }
         }
-        if(col.gameObject.layer == LayerMask.NameToLayer("StunZone"))
+        if (col.gameObject.layer == LayerMask.NameToLayer("StunZone"))
         {
             DummyMove ennemyMove;
             ennemyMove = col.gameObject.GetComponentInParent<DummyMove>();
             ennemyMove.hasBeenStunned = true;
+            ennemyMove.animator.SetTrigger("Fall");
         }
         //if (col.gameObject.layer == LayerMask.NameToLayer("Player") && (Input.GetButtonDown("Push_" + ControllerIndex) || Input.GetKeyDown(KeyCode.G)) && canStun == true && !isGrab)
         //{
