@@ -164,7 +164,7 @@ public class DummyMove : MonoBehaviour
             totemSc = col.gameObject.GetComponent<Totem>();
             if (totemSc.playerTotem == Player)
             {
-                totemSc.constructionSlider.value += 0.25f;
+                totemSc.constructionSlider.value += 0.04f;
                 Destroy(grabbedItem);
                 grabbedItem = null;
                 isGrab = false;
