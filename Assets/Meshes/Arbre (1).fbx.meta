@@ -3,7 +3,22 @@ guid: 54dee0b1253b88c4f9ec9dee2692970a
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bois
+    second: {fileID: 2100000, guid: 3cc81b1d8e81f4c479805a86925faab1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Feuille
+    second: {fileID: 2100000, guid: f67e94eaa5b1549459012bdc49b30bb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FeuillePolar
+    second: {fileID: 2100000, guid: 5cb0baf4d720f4e4da31a23973f09577, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
