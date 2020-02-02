@@ -11,7 +11,7 @@ public class ItemSpawn : MonoBehaviour
 
     private Vector3 randomPos;
 
-    public GameObject ItemToSpawn;
+    public GameObject[] ItemToSpawn;
 
     public float CdBeforeNextSpawn;
     private float cdBeforeNextSpawn;
@@ -35,7 +35,7 @@ public class ItemSpawn : MonoBehaviour
             NavMeshHit hit;
             if (NavMesh.SamplePosition(randomPos, out hit, 1f, NavMesh.AllAreas))
             {
-                Instantiate(ItemToSpawn, hit.position, transform.rotation);
+                Instantiate(ItemToSpawn[Random.Range(0, ItemToSpawn.Length -1)], hit.position, transform.rotation);
             }
             else
             {

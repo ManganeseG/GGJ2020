@@ -7705,10 +7705,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7201590687332347445}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7201590687332347445
@@ -7745,8 +7745,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xScaleMultiplier: 25
   zScaleMultiplier: 25
-  ItemToSpawn: {fileID: 160134021483930738, guid: 75968bf21389db1428fb936d112532dd,
-    type: 3}
+  ItemToSpawn:
+  - {fileID: 7468553403273022579, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: -8511930389915344499, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: 4255278971459213382, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: 4255278971459213382, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: -8949035193849300333, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: 2915702447682341389, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: -905095623509332354, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: -5652567268624828206, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: -5648548977121354009, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: -500903605279662422, guid: 6bc96288eba0c334288dc38a4df5c66c, type: 3}
+  - {fileID: 7871786416708924455, guid: 22d8788d5ffff9242aaf5b5a2ce2467b, type: 3}
+  - {fileID: -1443721513206092490, guid: 22d8788d5ffff9242aaf5b5a2ce2467b, type: 3}
+  - {fileID: -8767021791133814794, guid: 22d8788d5ffff9242aaf5b5a2ce2467b, type: 3}
+  - {fileID: -9058711702805925571, guid: 22d8788d5ffff9242aaf5b5a2ce2467b, type: 3}
+  - {fileID: -3906955731907171336, guid: 22d8788d5ffff9242aaf5b5a2ce2467b, type: 3}
+  - {fileID: 7908729820477485419, guid: 22d8788d5ffff9242aaf5b5a2ce2467b, type: 3}
+  - {fileID: -4166827311441420749, guid: 22d8788d5ffff9242aaf5b5a2ce2467b, type: 3}
+  - {fileID: 686982978003882018, guid: 4ab7212367e76f745ad83007cda6e0e9, type: 3}
+  - {fileID: 4426139494296712052, guid: 4ab7212367e76f745ad83007cda6e0e9, type: 3}
+  - {fileID: 5042217714635007972, guid: 4ab7212367e76f745ad83007cda6e0e9, type: 3}
+  - {fileID: 7419355123075962405, guid: 4ab7212367e76f745ad83007cda6e0e9, type: 3}
+  - {fileID: -8630572228949734714, guid: 4ab7212367e76f745ad83007cda6e0e9, type: 3}
+  - {fileID: -6631196195920211336, guid: 4ab7212367e76f745ad83007cda6e0e9, type: 3}
+  - {fileID: 3487335133158308229, guid: 4ab7212367e76f745ad83007cda6e0e9, type: 3}
+  - {fileID: 686982978003882018, guid: 4ab7212367e76f745ad83007cda6e0e9, type: 3}
   CdBeforeNextSpawn: 2
 --- !u!4 &7201590687332347449
 Transform:
